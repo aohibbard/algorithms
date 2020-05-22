@@ -1,13 +1,110 @@
-function scramble(str1, str2) {
-  let x = str1.split('')
-  let y = str2.split('')
-  let z = y.filter(ltr =>ltr === x)
-  debugger
-  if (z.length > 0) {
-  return false
+var myAtoi = function(str) {
+  let arr = str.split('')
+  let newArr = []
+  let firstChar = arr.indexOf(arr.find(char => char !== ' '))
+  let checker = ['-', '+', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  let nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  if (!checker.includes(arr[firstChar])){
+    return 0
   } else {
-  return true }
+    newArr.push(arr[firstChar])
+    for (let i = firstChar + 1; i < arr.length; i++){
+      if(arr[i] !== ' ' && nums.includes(arr[i])){
+        newArr.push(arr[i])
+      } else {
+        break;
+      }
+    }
+    if (newArr.join('') === '-' || newArr.join('') === '+' || newArr.slice(0,2).join('') === '+-' || newArr.slice(0,2).join('') === '-+'){
+      return 0;
+    } else {
+    let x = parseInt(newArr.join(''))
+    if (x > 2**31 - 1 && x > 0){
+      return (2**31) - 1 
+    } else if (x < (-2)**31 && x <0){
+      return (-2)**31
+    } else {
+      return x
+    }
+  }
 }
+};var myAtoi = function(str) {
+  let arr = str.split('')
+  let newArr = []
+  let firstChar = arr.indexOf(arr.find(char => char !== ' '))
+  let checker = ['-', '+', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  let nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  if (!checker.includes(arr[firstChar])){
+    return 0
+  } else {
+    newArr.push(arr[firstChar])
+    for (let i = firstChar + 1; i < arr.length; i++){
+      if(arr[i] !== ' ' && nums.includes(arr[i])){
+        newArr.push(arr[i])
+      } else {
+        break;
+      }
+    }
+    if (newArr.join('') === '-' || newArr.join('') === '+' || newArr.slice(0,2).join('') === '+-' || newArr.slice(0,2).join('') === '-+'){
+      return 0;
+    } else {
+    let x = parseInt(newArr.join(''))
+    if (x > 2**31 - 1 && x > 0){
+      return (2**31) - 1 
+    } else if (x < (-2)**31 && x <0){
+      return (-2)**31
+    } else {
+      return x
+    }
+  }
+}
+};
+
+// var myAtoi = function(str) {
+//   let arr = str.split('')
+//   newArr = []
+//   for (let i = 0; i<arr.length; i++){
+//       if(arr[i] !== ' '){
+//           newArr.push(arr[i])
+//           for (let j=i+1 ; j< arr.length; j++){
+//             if(arr[j] !== ' '){
+//               newArr.push(arr[j])
+//             } else {
+//               break;
+//             }
+//           debugger
+//           break;
+//           }
+//       }
+//   }
+//   debugger
+//   return newArr.join('')
+// };
+
+// var twoSum = function(nums, target) {
+//   let arr = [];
+//   for (let i = 0; i < nums.length ; i++){
+//       for (let j = i + 1; j < nums.length ; j++){
+//           if(nums[i] + nums[j] === target){
+//               arr.push(i);
+//               arr.push(j);
+//               break;
+//           }
+//       }
+//   }
+//   return arr;
+// };
+
+// function scramble(str1, str2) {
+//   let x = str1.split('')
+//   let y = str2.split('')
+//   let z = y.filter(ltr =>ltr === x)
+//   debugger
+//   if (z.length > 0) {
+//   return false
+//   } else {
+//   return true }
+// }
 
 
 
@@ -395,3 +492,20 @@ function scramble(str1, str2) {
 //     return Math.sqrt(n) % 1 === 0;
 //   }
 //   const isSquare = n => Number.isInteger(Math.sqrt(n));
+
+// PHP while loop
+
+// $numbers = [56, 65, 26, 86, 66, 34, 78, 74, 67, 18, 34, 73, 45, 67, 75, 10, 60, 80, 74, 16, 86, 34, 12, 23, 42, 72, 36, 3, 73, 9, 92, 81, 94, 54, 97, 74, 45, 55, 70, 94, 96, 81, 86, 86, 84, 4, 32, 8, 96, 86, 87, 18, 84, 87, 59, 48, 32, 90, 17, 22, 82, 79, 66, 28, 17, 14, 80, 83, 66, 36, 21, 89, 68, 2, 51, 65, 20, 87, 48, 5, 1, 16, 60, 53, 84, 90, 16, 2, 37, 73, 57, 70, 57, 69, 68, 1, 24, 40, 72, 97];
+
+// $i = 0;
+// while ($i < count($numbers) {
+// 	$i += 1;
+        
+//     if ($numbers[i] % 2 == 0){
+//     continue;
+//     }
+//     if ($numbers[i] % 2 != 0){
+//     echo $numbers[i];
+//     continue;
+//     }     
+//  }
