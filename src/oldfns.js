@@ -83,6 +83,7 @@
 //   newArr.push(...matrix.map(arr => arr.pop()))
 //   //bottom in reverse
 //   newArr.push(...matrix.pop().reverse())
+//   // left edge
 //   newArr.push(...matrix.map(arr => arr.shift()).reverse())
 //   unroll(matrix)
 //   return ...newArr
