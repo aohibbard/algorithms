@@ -27,6 +27,24 @@ var isValid = function(s) {
 };
 // bad run time
 
+// perfect square
+var isPerfectSquare = function(num) {
+  if (num < 0) return false;
+  const squares = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169]
+  if (squares.includes(num)){
+      return true
+  } else {
+      let i = 14;
+      while (i * i <= num){
+          if(i * i === num){
+              return true
+          }
+          i++
+      }
+      return false
+  }
+};
+
 
 var isPalindrome = function(s) {
     let arr = s.replace(/\W/g, '').toLowerCase().split('')
