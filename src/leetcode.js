@@ -109,8 +109,8 @@ var isPalindrome = function(x) {
   }
 };
 
-public class Solution {
-  public bool IsPalindrome(int x) {
+
+  function IsPalindrome(int x) {
       // Special cases:
       // As discussed above, when x < 0, x is not a palindrome.
       // Also if the last digit of the number is 0, in order to be a palindrome,
@@ -131,7 +131,6 @@ public class Solution {
       // since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.
       return x == revertedNumber || x == revertedNumber/10;
   }
-}
 
 
 var lengthOfLastWord = function(s) {
