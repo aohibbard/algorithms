@@ -1,8 +1,8 @@
 // 258 add digits
 // return when the sum of digits is only a one digit sum
 var addDigits = function(num) {
-  var sum = function(n){
-      var s = 0;
+  let sum = function(n){
+      let s = 0;
       while(n>=10){
           s += parseInt(n%10);
           n = parseInt(n/10);
@@ -11,7 +11,7 @@ var addDigits = function(num) {
       return s;
   }
   
-  var res = sum(num);
+  let res = sum(num);
   while(res>=10){
       res = sum(res);
   }
