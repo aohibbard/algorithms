@@ -1,4 +1,16 @@
 
+// capitalize everything in a nested array, t
+// let array = ['sean', 'derek', ['anna', 'beyonce', ['gaga'], 'jim'], 'karen', ['melinda', 'aimee', 'iris', ['joanne']], 'kayla']
+// function capitalize(arr){
+//     for(let i = 0; i < arr.length; i++){
+//         if (typeof(arr[i]) === 'string'){
+//             arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1, arr[i].length)
+//         } else {
+//             capitalize(arr[i])
+//         }
+//     }
+//     return arr;
+// }
 
 // var searchInsert = function(nums, target) {
 //     if (nums.length === 0 || nums[0] > target) return 0;
