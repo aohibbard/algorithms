@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
     </head>
@@ -11,28 +11,4 @@
     </body>
 
     <script type="text/javascript" src="src/index.js"></script
-    </html> -->
-
-
-<!DOCTYPE html> 
-    <html>
-        <head>
-            <script src="https://core.spreedly.com/iframe/express-2.min.js" defer></script>
-        </head>
-        <script>
-            SpreedlyExpress.init("MYARw5CfF93C3jepdcFYdciCTUh", {
-            "amount": "$9.83",
-            "company_name": "Acme Widgets",
-            "sidebar_top_description": "Providing quality widgets since 2015",
-            "sidebar_bottom_description": "Your order total today",
-            "full_name": "First Last"
-            }, {
-            "email": "customer@gmail.com"
-            });
-        </script>
-        <body>
-            <form id="payment-form" action="http://localhost:9393/checkout">
-                <input type="hidden" name="payment_method_token" id="payment_method_token">
-                <input type="button" value="Enter Payment Info" onclick="SpreedlyExpress.openView();">
-              </form>
-        </body>
+    </html>
