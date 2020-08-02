@@ -1,3 +1,17 @@
+// var removeDuplicates = function(nums){
+//     let counter = 0;
+//     for(let i = 0; i < nums.length; i++){
+//         debugger
+//         if(nums[i] !== nums[i + 1]){
+//             counter++
+//         } else {
+//             nums.splice(i, 1);
+//             i--
+//         }
+//     }
+//     return counter;
+// }
+
 
 // capitalize everything in a nested array, t
 // let array = ['sean', 'derek', ['anna', 'beyonce', ['gaga'], 'jim'], 'karen', ['melinda', 'aimee', 'iris', ['joanne']], 'kayla']

@@ -1,3 +1,13 @@
+
+// detect capital
+// 'gggg' is true / 'FlaG' is false / 'USA' is correct / 'g' is correct
+var detectCapitalUse = function(word) {
+  // if (word.length === 1) return true;
+  let upperCase = word.split('').filter(char => char === char.toUpperCase()).join('')
+  return (upperCase === word || upperCase.length === 0 || upperCase === word.charAt(0))
+};
+
+
 // 258 add digits
 // return when the sum of digits is only a one digit sum
 var addDigits = function(num) {
