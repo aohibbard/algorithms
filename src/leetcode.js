@@ -162,6 +162,19 @@ var isPalindrome = function(x) {
       return x == revertedNumber || x == revertedNumber/10;
   }
 
+var removeDuplicates = function(nums){
+    let counter = 0;
+    for(let i = 0; i < nums.length; i++){
+        debugger
+        if(nums[i] !== nums[i + 1]){
+            counter++
+        } else {
+            nums.splice(i, 1);
+            i--
+        }
+    }
+    return counter;
+}
 
 var lengthOfLastWord = function(s) {
   if (!s.includes(' ')) return s.length
