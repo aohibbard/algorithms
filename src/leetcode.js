@@ -7,6 +7,17 @@ var detectCapitalUse = function(word) {
   return (upperCase === word || upperCase.length === 0 || upperCase === word.charAt(0))
 };
 
+// maybe works?
+var isPowerOfFour = function(num) {
+  if (num < 1 || num > Math.pow(2, 32)) return false;
+  if ([1, 4, 16, 64, 256, 1024, 4096, 16384, 65536, 262144, 1048576].includes(num)){
+      return true;
+  } else {
+      const sol = Math.pow(num, 1/4)
+      return sol % sol === 1;
+  };
+};
+
 
 // 258 add digits
 // return when the sum of digits is only a one digit sum
