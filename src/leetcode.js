@@ -150,6 +150,23 @@ var longestCommonPrefix = function(strs) {
     return prefix;
   };
 
+  // alt solution using left & right counters, while loop
+  // Runtime: 80 ms, faster than 73.46% of JavaScript online submissions for Move Zeroes.
+// Memory Usage: 39.1 MB, less than 5.07% of JavaScript online submissions for Move Zeroes.
+
+  var moveZeroes = function(nums) {
+    let left = right = 0;
+    while (right < nums.length){
+        if(nums[left] === 0){
+            [nums[left], nums[right]] = [nums[right], nums[left]]
+        }
+        if (nums[left] !== 0){
+            left++
+        }
+        right++
+    }
+};
+
 
 // CHECK IF NUMBER IS PALINDROME
 var isPalindrome = function(x) {
