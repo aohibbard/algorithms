@@ -1,3 +1,22 @@
+// PROBLEM 283 - MOVE ZEROES
+// Runtime: 84 ms, faster than 59.63% of JavaScript online submissions for Move Zeroes.
+// Memory Usage: 38.1 MB, less than 55.00% of JavaScript online submissions for Move Zeroes.
+// The trick is you need to decrement the counter when you add a Zero AND Also decrement the length of the array so you don't end up in an infinite loop tracking over zeros that have already been pushed
+
+var moveZeroes = function(nums) {
+  let arrLength = nums.length
+  for (let i = 0; i < arrLength ; i++){  
+      if(nums[i] === 0){
+          nums.splice(i, 1);
+          nums.push(0);
+          i--;
+          arrLength = arrLength - 1;
+      }
+  }
+  return nums
+};
+
+
 
 // detect capital
 // 'gggg' is true / 'FlaG' is false / 'USA' is correct / 'g' is correct
