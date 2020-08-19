@@ -1,4 +1,48 @@
 /*
+We distribute some number of candies, to a row of n = num_people people in the following way:
+
+We then give 1 candy to the first person, 2 candies to the second person, and so on until we give n candies to the last person.
+
+Then, we go back to the start of the row, giving n + 1 candies to the first person, n + 2 candies to the second person, and so on until we give 2 * n candies to the last person.
+
+This process repeats (with us giving one more candy each time, and moving to the start of the row after we reach the end) until we run out of candies.  The last person will receive all of our remaining candies (not necessarily one more than the previous gift).
+
+Return an array (of length num_people and sum candies) that represents the final distribution of candies.
+
+inputs 60, 4 should return [15, 18, 15, 12]
+inputs 10, 3 should return [5, 2, 3]
+inputs 7, 4 should return [1, 2, 3, 1]
+
+method is to create empty array based on number of people, fill it with zeroes
+than create recursive function that is just a for loop that adds based on the availability of candies
+the trick is to track the candy count at every turn of the loop
+AND to track the last amount given at each recursion loop
+*/
+
+
+var distributeCandies = function(candies, num_people) {
+  let array = new Array(num_people).fill(0)
+  distribute(candies)
+  function distribute(candyNum, firstAmt = 0){
+      for(let i = 0; i < array.length; i++){
+          let giveAmt = (firstAmt + 1)
+          if (candyNum > giveAmt){
+              array[i] = array[i] + giveAmt
+          } else {
+               array[i] = array[i] + candyNum
+          }
+          candyNum = candyNum - giveAmt;
+          firstAmt = giveAmt;
+          if (candyNum < 0) { break }
+      }
+      if (candyNum > 0) distribute(candyNum, firstAmt)
+  }
+  return array;
+};
+
+
+
+/*
 19 August - Goat Latin
 A sentence S is given, composed of words separated by spaces. Each word consists of lowercase and uppercase letters only.
 
