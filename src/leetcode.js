@@ -1,4 +1,26 @@
 /*
+Find all numbers in an array that are duplicated twice
+Input:
+[4,3,2,7,8,2,3,1]
+
+Output:
+[2,3]
+*/
+
+var findDuplicates = function(nums) {
+  let count = {}
+  for(const num of nums){
+      if (!count[num]){
+          count[num] = 1
+      } else {
+          count[num]++
+      }
+  }
+  let keys = Object.keys(count)
+  return keys.filter(x => count[x] === 2)
+};
+
+/*
 We distribute some number of candies, to a row of n = num_people people in the following way:
 
 We then give 1 candy to the first person, 2 candies to the second person, and so on until we give n candies to the last person.
