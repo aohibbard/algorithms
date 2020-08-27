@@ -33,6 +33,20 @@ var findDuplicates = function(nums) {
   return sol;
 }
 
+// slower but less memory . modify array in place
+var findDuplicates = function(nums) {
+  nums.sort();
+  for (let i = 0; i < nums.length; i++){
+      if (nums[i] === nums[i + 1] && nums[i] !== nums[i + 2]){
+          nums.splice(i + 1, 1)
+      } else {
+          nums.splice(i, 1)
+          i--;
+      }
+  }
+  return nums;
+}
+
 /*
 We distribute some number of candies, to a row of n = num_people people in the following way:
 
