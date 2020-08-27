@@ -20,6 +20,19 @@ var findDuplicates = function(nums) {
   return keys.filter(x => count[x] === 2)
 };
 
+// slightly shorter solution
+var findDuplicates = function(nums) {
+  let sol = [];
+  nums.sort();
+  for (let i = 0; i < nums.length; i++){
+      if (nums[i] === nums[i + 1] && nums[i] !== nums[i + 2]){
+          sol.push(nums[i]);
+          i++;
+      }
+  }
+  return sol;
+}
+
 /*
 We distribute some number of candies, to a row of n = num_people people in the following way:
 
