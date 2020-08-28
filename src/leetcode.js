@@ -20,6 +20,23 @@ var findDuplicates = function(nums) {
   return keys.filter(x => count[x] === 2)
 };
 
+// using reduce
+
+function findDuplicates(nums){
+  let uniq = nums.map((num) => {
+      return {
+          count: 1,
+          num: num
+      }
+  }).reduce((a, b) => {
+  a[b.num] = (a[b.num] || 0) + b.count
+  return a
+}, {})
+
+  let duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+  return duplicates
+}
+
 // slightly shorter solution
 var findDuplicates = function(nums) {
   let sol = [];
