@@ -10,6 +10,8 @@ Output:
 var findDuplicates = function(nums) {
   let count = {}
   for(const num of nums){
+    // could also be:
+    // count[num] = 1 + (count[num] || 0)
       if (!count[num]){
           count[num] = 1
       } else {
@@ -51,6 +53,7 @@ var findDuplicates = function(nums) {
 }
 
 // slower but less memory . modify array in place
+// second conditional of if not necessary because duplicates only appear twice
 var findDuplicates = function(nums) {
   nums.sort();
   for (let i = 0; i < nums.length; i++){
@@ -62,6 +65,11 @@ var findDuplicates = function(nums) {
       }
   }
   return nums;
+}
+
+// same logic but with filter
+var findDuplicates = function(nums){
+    return nums.sort().filter((val, idx, arr) => arr[idx - 1] === val);
 }
 
 /*
