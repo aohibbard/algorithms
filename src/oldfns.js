@@ -74,20 +74,20 @@
 //                 [11,16,15,6],
 //                 [10,9, 8, 7]];
 
-// function unroll(matrix) {
-//   const newArr = []
-//   if (matrix.length === 0) return ;
-//   // first row
-//   newArr.push(...matrix.shift())
-//   // right edge
-//   newArr.push(...matrix.map(arr => arr.pop()))
-//   //bottom in reverse
-//   newArr.push(...matrix.pop().reverse())
-//   // left edge
-//   newArr.push(...matrix.map(arr => arr.shift()).reverse())
-//   unroll(matrix)
-//   return ...newArr
-// }
+function unroll(matrix) {
+  const newArr = []
+  if (matrix.length === 0) return ;
+  // first row
+  newArr.push(...matrix.shift())
+  // right edge
+  newArr.push(...matrix.map(arr => arr.pop()))
+  //bottom in reverse
+  newArr.push(...matrix.pop().reverse())
+  // left edge
+  newArr.push(...matrix.map(arr => arr.shift()).reverse())
+  unroll(matrix)
+  return ...newArr
+}
 
 // function unroll(matrix) {
 //   const newArr = []
