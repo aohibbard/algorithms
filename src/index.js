@@ -1,6 +1,5 @@
 
 
-
 // capitalize everything in a nested array, t
 // let array = ['sean', 'derek', ['anna', 'beyonce', ['gaga'], 'jim'], 'karen', ['melinda', 'aimee', 'iris', ['joanne']], 'kayla']
 // function capitalize(arr){
