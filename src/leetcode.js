@@ -1,4 +1,10 @@
 /*
+Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
+
+According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each."
+*/
+
+/*
 Find all numbers in an array that are duplicated twice
 Input:
 [4,3,2,7,8,2,3,1]
@@ -6,6 +12,18 @@ Input:
 Output:
 [2,3]
 */
+var hIndex = function(citations) {
+  citations.sort((a, b) => b-a);
+  let hIndex = 0;
+  for (let i = 0; i < citations.length; i++){
+      if(citations[i] >= i+1){
+          hIndex = i+1;
+      } else {
+          break
+      }
+  }
+  return hIndex
+};
 
 var findDuplicates = function(nums) {
   let count = {}
