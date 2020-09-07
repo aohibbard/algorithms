@@ -10,6 +10,29 @@ var reverseVowels = function(s) {
       }
       return s.join('')
   };
+// faster, more memory efficient by not using arrays
+var reverseVowels = function(s) {
+  let vowels = (s.match(/[aiueo]/gi) || []).reverse(); // Find all vowels
+  let i = -1;
+  
+// For each vowel replace it with its reversed (from vowels variable)
+   return s.replace(/[aiueo]/gi, (match) => {
+       i++;
+       return vowels[i];
+   });  
+};
+
+// slightly modified version of the above without using the counter or reverse
+var reverseVowels = function(s) {
+  let vowels = (s.match(/[aiueo]/gi) || []) // Find all vowels
+  // let i = -1;
+  
+// For each vowel replace it with its reversed (from vowels variable)
+   return s.replace(/[aiueo]/gi, (match) => {
+       return vowels.pop();
+   });  
+};
+
 
 
 /*
