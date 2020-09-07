@@ -1,3 +1,17 @@
+/* 345 reverse vowels in a string */
+// okay speed, bad on memory
+var reverseVowels = function(s) {
+      let vowels = s.split('').filter(vow => vow.toLowerCase().match(/[aeiou]/))
+      s = s.split('')
+      for(let i = 0; i < s.length; i++){
+          if(s[i].toLowerCase().match(/[aeiou]/)){
+              s.splice(i, 1, vowels.pop())
+          }
+      }
+      return s.join('')
+  };
+
+
 /*
 Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
 
