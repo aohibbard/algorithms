@@ -9,6 +9,16 @@ var intersection = function(nums1, nums2) {
   return [...new Set(arr)]
 };
 
+// more memory usage but much faster
+var intersection = function(nums1, nums2) {
+  let newSet = new Set([...nums1])
+  let ans = new Set();
+  for(const num of nums2) {
+      if (newSet.has(num)) ans.add(num)
+  }
+  return [...ans]
+}
+
 
 /* 345 reverse vowels in a string */
 // okay speed, bad on memory
