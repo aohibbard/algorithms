@@ -1,3 +1,15 @@
+// 349 intersection of 2 arrays
+var intersection = function(nums1, nums2) {
+  let arr;
+  if (nums1.length > nums2.length){
+      arr = nums1.filter(val => nums2.includes(val))
+  } else {
+      arr = nums2.filter(val => nums1.includes(val))
+  }
+  return [...new Set(arr)]
+};
+
+
 /* 345 reverse vowels in a string */
 // okay speed, bad on memory
 var reverseVowels = function(s) {
