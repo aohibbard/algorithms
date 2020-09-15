@@ -82,6 +82,22 @@ function encryptString(message, r, c){
   return str
 }
 
+// cleaned up 
+function encryptString(message, r, c){
+  let matrix = []
+  message = message.split('')
+  for(let i = 0; i < c; i++){
+      matrix.push(message.splice(0, c))
+  }
+//   let str = ''
+  let word = []
+  while(matrix[0].length > 0){
+    word.push(...matrix.map(subArr => subArr.shift()))
+  }
+  return word.join('')
+}
+
+
 function codeString(str){
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
   let obj = {}
