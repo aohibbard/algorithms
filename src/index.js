@@ -1,21 +1,4 @@
 
-const message1 = "This message is 25 charac"
-const r1 = 5;
-const c2 = 5;
-function encryptString(message, r, c){
-  let matrix = []
-  message = message.split('')
-  for(let i = 0; i < c; i++){
-      matrix.push(message.splice(0, c))
-  }
-//   let str = ''
-  let word = []
-  while(matrix[0].length > 0){
-    word.push(...matrix.map(subArr => subArr.shift()))
-    // alt str += (...matrix.map(subArr => subArr.shift())).join('') ?
-  }
-  return word.join('')
-}
 
 // capitalize everything in a nested array, t
 // let array = ['sean', 'derek', ['anna', 'beyonce', ['gaga'], 'jim'], 'karen', ['melinda', 'aimee', 'iris', ['joanne']], 'kayla']

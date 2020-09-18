@@ -28,6 +28,10 @@ function checkSudoku(matrix) {
             return "INVALID"
         }
     })
+    // repeat for columns
+    for (let i = 0; i < matrix.length; i++){
+      let column = matrix.forEach
+    }
     return "VALID";
   }
   
