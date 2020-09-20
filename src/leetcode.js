@@ -22,6 +22,7 @@ var intersection = function(nums1, nums2) {
 // last substring
 // good run time, bad memory
 var lengthOfLastWord = function(s) {
+  // split only words, not individual characters
   s = s.trim().split(' ')
   return s.length > 0 ? s[s.length - 1].length : 0
 };
