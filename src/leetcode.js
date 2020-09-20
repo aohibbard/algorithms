@@ -19,6 +19,13 @@ var intersection = function(nums1, nums2) {
   return [...ans]
 }
 
+// last substring
+// good run time, bad memory
+var lengthOfLastWord = function(s) {
+  s = s.trim().split(' ')
+  return s.length > 0 ? s[s.length - 1].length : 0
+};
+
 
 /* 345 reverse vowels in a string */
 // okay speed, bad on memory
