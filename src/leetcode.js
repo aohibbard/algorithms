@@ -26,6 +26,19 @@ var lengthOfLastWord = function(s) {
   return s.length > 0 ? s[s.length - 1].length : 0
 };
 
+// slightly slower but better memory usage, requires attention to edge cases
+var lengthOfLastWord = function(s) {
+  // if s is only spaces
+  if (s.trim().length === 0) return 0
+  s = s.trim()
+  for (let i = s.length - 1; i > 0; i--){
+      if (s[i] === ' '){
+          return s.length - i - 1;
+      }
+  }
+  // if s has characters but no spaces
+  return s.length;
+};
 
 /* 345 reverse vowels in a string */
 // okay speed, bad on memory
