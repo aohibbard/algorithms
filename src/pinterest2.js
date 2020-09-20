@@ -103,19 +103,29 @@ const parentChildPairs2 = [
 function hasCommonAncestor(pairs, childA, childB) {
     let aAncestors = []
     let bAncestors = []
-//     find child in matrix, this is treated as x
-        let firstChildLocation = pairs.filter(subArr => subArr[1] === childA)
-        let secondChildLocation = pairs.filter(subArr => subArr[1] === childB)
-        aAncestors.push(firstChildLocation[0])
-        bAncestors.push(secondChildLocation[0])
-        while (){
-//           
-        }
-//     parents would be x[0] in the resulting array
+//     find child in matrix, this will return the actual parent child array
+    let firstChild = pairs.filter(subArr => subArr[1] === childA)
+    let secondChild = pairs.filter(subArr => subArr[1] === childB)
+    aAncestors.push(firstChild[0])
+    bAncestors.push(secondChild[0])
+    const findParent = function(num, familyTree){
+      let family = pairs.filter(subArr => subArr[1] === num)
+      if family.length > 0{
+        familyTree.push(family[0])
+        findParent(family[family.length - 1], familyTree)
+      }
+    }
+    findParent(aAncestors[aAncestors.length - 1], aAncestors)
+    findParent(bAncestors[bAncestors.length - 1], bAncestors)
+    return (aAncestors.filter(val => bAncestors.includes(val)).length > 1) ? true : false
+    // does ancestor have a parent?
+  
+//     parents would be x[x.length - 1] in the resulting array
 //     feed these into some kind of variable akin to a "next" & while this variable is still true, continue to iterate over the parent child pairs, collecting all ancestors of the argument
 //     this would be an array
 //    ideally do this looping at the same time for both arguments, and have two arrays of ancestors for each argument
 //     if the arrays have any numbers in common return true
+// to check common bond if aAncestors.filter(val => bAncestors.includes(val)).length > 1) return true
     
 //     a better way of doing this would be to check the arrays as we go
     aAncestors.push(x.filter(subArr => subarr[0]))
