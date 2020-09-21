@@ -54,6 +54,20 @@ function fillArr(str, colSize){
 const message1 = "This message is 25 charac"
 const r1 = 5;
 const c2 = 5;
+
+function encryptString(message, r, c){
+  message = message.split('')
+  let newStr = ''
+  let x = 0
+  while(x < r){
+    newStr += message.filter(char => message.indexOf(char) % r === x).join('')
+    x++
+  }
+  return newStr
+}
+
+//     newStr += message.filter(char => message.indexOf(char) % r ===0).join('')
+
 function encryptString(message, r, c){
   let matrix = []
   let msgArr = message.split('')
