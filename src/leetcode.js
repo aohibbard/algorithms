@@ -1,3 +1,52 @@
+// carpooling
+var carPooling = function(trips, capacity) {
+  const drop = new Map();
+  trips.sort((a, b) => a[1] - b[1])
+  let curr = 0;
+  
+  for (let [num, start, end] of trips){
+      curr += num
+      for (let [stop, ppl] of drop){
+          if (stop <= start){
+              curr -= ppl;
+              drop.delete(stop)
+          }
+      }
+      drop.set(end, (drop.get(end) || 0) + num);
+      if (curr > capacity) return false;
+  }
+  return true;
+};
+
+// an attempt
+const trips2 = [[9,3,6],[8,1,7],[6,6,8],[8,4,9],[4,2,9]]
+const cap2 = 28 // false
+const trips1 = [[2,1,5],[3,3,7]]
+const cap1 = 4 // false
+const trips3 = [[3,2,7],[3,7,9],[8,3,9]]
+const cap3 = 11 // true
+
+var carPooling = function(trips, capacity) {
+    trips = trips.sort((a, b) => a[1] - b[1])
+    for(let i = 0; i < trips.length - 1; i++){
+        // find all collections
+        trips.filter(subArr => 
+            subArr[1] > trips[i][1] && //all trips collecting after ith's collection
+            subArr[1] < trips[i][2] && //collect before ith trips drop off
+            subArr[2] <= trips[i][2] //drop off is within
+        )
+        //compare location
+        //figure out all people collected before drop off at 1
+        //collect all trips whose pick up is before the ith drop off
+        let dropOffs = trips.filter(subArr => subArr[1] < trips[i][2])
+        let tripCapacity = dropOffs.map(subArr => subArr[0]).reduce((acc, val) => acc += val)
+        debugger
+        if (tripCapacity > capacity) return false
+    }
+    return true
+};
+
+
 // 349 intersection of 2 arrays
 var intersection = function(nums1, nums2) {
   let arr;
