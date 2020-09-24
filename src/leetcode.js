@@ -347,6 +347,14 @@ var isPowerOfFour = function(num) {
   };
 };
 
+// better 342 powers of 4
+var isPowerOfFour = function(num) {
+  while (num > 1){
+    if (num % 4 === 0) num /= 4
+    else break
+}
+return num === 1
+}
 
 // power of two 231
 var isPowerOfTwo = function(n) {
