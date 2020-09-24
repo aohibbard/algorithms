@@ -356,6 +356,17 @@ var isPowerOfFour = function(num) {
 return num === 1
 }
 
+// max profit 
+var maxProfit = function(prices) {
+  let maxProfit = 0;
+  let lowestVal = prices[0]
+  for (let i = 1; i < prices.length; i++){
+      lowestVal = Math.min(prices[i], lowestVal)
+      maxProfit = Math.max(maxProfit, prices[i] - lowestVal)
+  }
+  return maxProfit
+};
+
 // power of two 231
 var isPowerOfTwo = function(n) {
   while (n > 1){
