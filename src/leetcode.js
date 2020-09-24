@@ -348,6 +348,15 @@ var isPowerOfFour = function(num) {
 };
 
 
+// power of two 231
+var isPowerOfTwo = function(n) {
+  while (n > 1){
+      if (n % 2 === 0) n /= 2;
+      else break
+  }
+  return n === 1
+};
+
 // 258 add digits
 // return when the sum of digits is only a one digit sum
 var addDigits = function(num) {
