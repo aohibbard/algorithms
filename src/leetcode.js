@@ -12,6 +12,20 @@ var compareVersion = function(version1, version2) {
   return 0
 };
 
+// 1380 lucky numbers in matrix
+// runtime 72ms beats 96.85% of JS solutions
+// memory usage 39.4 mb beats 65.75 % of JS solutions
+var luckyNumbers  = function(matrix) {
+  const lucky = []
+  for (let i = 0; i < matrix.length; i++){
+      let min = Math.min(...matrix[i])
+      let idx = matrix[i].indexOf(min)
+      let column = matrix.map(subArr => subArr[idx])
+      if (min === Math.max(...column)) lucky.push(min)
+  }
+  return lucky
+};
+
 // carpooling
 var carPooling = function(trips, capacity) {
   const drop = new Map();
