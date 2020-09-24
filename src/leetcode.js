@@ -1,3 +1,17 @@
+// version numbers
+var compareVersion = function(version1, version2) {
+  version1 = version1.split('.')
+  version2 = version2.split('.')
+  let longest = Math.max(version1.length, version2.length)
+  for(let i = 0; i < longest; i++){
+      let vOne = parseInt(version1[i]) || 0
+      let vTwo = parseInt(version2[i]) || 0
+      if (vOne > vTwo) return 1;
+      if (vTwo > vOne) return - 1
+  }
+  return 0
+};
+
 // carpooling
 var carPooling = function(trips, capacity) {
   const drop = new Map();
