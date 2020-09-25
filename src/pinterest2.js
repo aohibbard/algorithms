@@ -99,40 +99,106 @@ const parentChildPairs2 = [
     [1, 3], [3, 4], [5, 6], [5, 7], [7, 8]
 ];
 
-
-function hasCommonAncestor(pairs, childA, childB) {
-    let aAncestors = []
-    let bAncestors = []
-//     find child in matrix, this will return the actual parent child array
-    let firstChild = pairs.filter(subArr => subArr[1] === childA)
-    let secondChild = pairs.filter(subArr => subArr[1] === childB)
-    aAncestors.push(firstChild[0])
-    bAncestors.push(secondChild[0])
-    const findParent = function(num, familyTree){
-      let family = pairs.filter(subArr => subArr[1] === num)
-      if family.length > 0{
-        familyTree.push(family[0])
-        findParent(family[family.length - 1], familyTree)
-      }
-    }
-    findParent(aAncestors[aAncestors.length - 1], aAncestors)
-    findParent(bAncestors[bAncestors.length - 1], bAncestors)
-    return (aAncestors.filter(val => bAncestors.includes(val)).length > 1) ? true : false
-    // does ancestor have a parent?
-  
-//     parents would be x[x.length - 1] in the resulting array
-//     feed these into some kind of variable akin to a "next" & while this variable is still true, continue to iterate over the parent child pairs, collecting all ancestors of the argument
-//     this would be an array
-//    ideally do this looping at the same time for both arguments, and have two arrays of ancestors for each argument
-//     if the arrays have any numbers in common return true
-// to check common bond if aAncestors.filter(val => bAncestors.includes(val)).length > 1) return true
-    
-//     a better way of doing this would be to check the arrays as we go
-    aAncestors.push(x.filter(subArr => subarr[0]))
-    let parent1 = x[0][0]
-    let parent2 = x[1][0]
-    console.log(aAncestors)
-    console.log(parent2)
+// this works
+const findParents = function(child, pairs){
+  let parents = pairs.filter(subArr => subArr[1] === child)
+  if(parents.length){
+    return parents.flat().filter(val => val !== child)
+  }
 }
+
+function hasCommonAncestor(childA, childB, pairs){
+    let ancestorsA = findParents(childA, pairs)
+    let ancestorsB = findParents(childB, pairs)
+    if (!ancestorsA || !ancestorsB) return false
+    let i = 0;
+        while(i < ancestorsA.length){
+            let newParents = findParents(ancestorsA[i], pairs)
+            if (newParents) ancestorsA.push(...newParents)
+            i++
+        }
+        let j = 0
+        while (j < ancestorsB.length){
+            let parentsB = findParents(ancestorsB[j], pairs)
+            if (parentsB) ancestorsB.push(...parentsB)
+            j++
+         }
+    return ancestorsA.filter(val => ancestorsB.includes(val)).length > 0
+}
+
+
+
+
+// function hasCommonAncestor(childA, childB, pairs){
+//     let ancestorsA = findParents(childA, pairs)
+//     let ancestorsB = findParents(childB, pairs)
+//     if(ancestorsA.length){
+//         let i = 0;
+//         while(i < ancestorsA.length){
+//             debugger
+//             let newParents = findParents(ancestorsA[i], pairs)
+//             if (newParents) ancestorsA.push(...newParents)
+//             i++
+//         }
+//     }
+//     return ancestors
+// }
+
+// function hasCommonAncestor(pairs, childA, childB){
+//   let aAncestors = []
+//   let bAncestors = []
+//   // to find an ancestor
+//   const findParents = function(child, arr, pairs){
+//     let parents = pairs.filter(subArr => subArr[1] === child)
+//     if(parents.length){
+//       arr.push(...parents.flat().filter(val => val !== child))
+//       for (const parent of parents){
+//         findParents(parent, arr, pairs)
+//       }
+//     } else {
+//       return false
+//     }
+//     return arr
+//   }
+//   while(findParents(childA, aAncestors) || findParents(childB, bAncestors)){
+//     findParents()
+//   }
+
+// }
+
+// function hasCommonAncestor(pairs, childA, childB) {
+//     let aAncestors = []
+//     let bAncestors = []
+// //     find child in matrix, this will return the actual parent child array
+//     let firstChild = pairs.filter(subArr => subArr[1] === childA)
+//     let secondChild = pairs.filter(subArr => subArr[1] === childB)
+//     aAncestors.push(firstChild[0])
+//     bAncestors.push(secondChild[0])
+//     const findParent = function(num, familyTree){
+//       let family = pairs.filter(subArr => subArr[1] === num)
+//       if family.length > 0{
+//         familyTree.push(family[0])
+//         findParent(family[family.length - 1], familyTree)
+//       }
+//     }
+//     findParent(aAncestors[aAncestors.length - 1], aAncestors)
+//     findParent(bAncestors[bAncestors.length - 1], bAncestors)
+//     return (aAncestors.filter(val => bAncestors.includes(val)).length > 1) ? true : false
+//     // does ancestor have a parent?
+  
+// //     parents would be x[x.length - 1] in the resulting array
+// //     feed these into some kind of variable akin to a "next" & while this variable is still true, continue to iterate over the parent child pairs, collecting all ancestors of the argument
+// //     this would be an array
+// //    ideally do this looping at the same time for both arguments, and have two arrays of ancestors for each argument
+// //     if the arrays have any numbers in common return true
+// // to check common bond if aAncestors.filter(val => bAncestors.includes(val)).length > 1) return true
+    
+// //     a better way of doing this would be to check the arrays as we go
+//     aAncestors.push(x.filter(subArr => subarr[0]))
+//     let parent1 = x[0][0]
+//     let parent2 = x[1][0]
+//     console.log(aAncestors)
+//     console.log(parent2)
+// }
 
 hasCommonAncestor(parentChildPairs2, 4, 12)
