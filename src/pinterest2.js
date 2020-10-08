@@ -126,7 +126,11 @@ function hasCommonAncestor(childA, childB, pairs){
     return ancestorsA.filter(val => ancestorsB.includes(val)).length > 0
 }
 
-
+// modifications?
+// 1 while loop?
+// at line 123 insert  if(ancestorsA.includes(parentsB)) return false
+//        then else if (!ancestorsB) return false
+// end return false;
 
 
 // function hasCommonAncestor(childA, childB, pairs){

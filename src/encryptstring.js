@@ -58,8 +58,10 @@ const c2 = 5;
 function encryptString(message, r, c){
   message = message.split('')
   let newStr = ''
+  // x is a row iterator
   let x = 0
   while(x < r){
+    // for every turn of the loop on x, add the character at the value r - x (x corresponding to the rows)
     newStr += message.filter(char => message.indexOf(char) % r === x).join('')
     x++
   }

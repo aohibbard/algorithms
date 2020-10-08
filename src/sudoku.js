@@ -20,11 +20,11 @@ function checkSudoku(matrix) {
     // check array is size NxN
     if (matrix.filter(subArr => subArr !== arrSize)) return "INVALID";
     // check range of values
-    if (matrix.flat().filter(val => val > arrSize || val < 1)) return "INVALID";
+    // if (matrix.flat().filter(val => val > arrSize || val < 1)) return "INVALID";
     // check rows
     matrix.forEach(subArr => {
         let copies = [... new Set(subArr)]
-        if (copies.length < subArr.length){
+        if (copies.length < subArr.length || subArr.includes(val => val > arrSize || val < 1)){
             return "INVALID"
         }
     })

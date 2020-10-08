@@ -1,36 +1,163 @@
-const parentChildPairs1 = [
-    [1, 3], [2, 3], [3, 6], [5, 6], [5, 7], [4, 5],
-    [4, 8], [4, 9], [9, 11], [14, 4], [13, 12], [12, 9]
-];
+// Kalpesh -- I wanted to complete the function we had described for step 3 of this problem. I've left the second function we wrote,
+// and then modified it slightly to fit the conditions of the third problem
+// I'm not certain of the exact conditions for what holidays are in the "Up Next" array, so I've set it to holidays within the next 30 days
 
-const parentChildPairs2 = [
-    [11, 10], [11, 12], [2, 3], [10, 2], [10, 5],
-    [1, 3], [3, 4], [5, 6], [5, 7], [7, 8]
-];
+const eventsList = [ 
+  {"name": "Halloween", "date": "2020-10-31"},
+     {"name": "Diwali", "date": "2020-11-14"},
+     {"name": "Indigenous Peoples' Day", "date": "2020-10-11"},
+     {"name": "Veterans Day", "date": "2020-11-11"},
+  ]
 
 
-function hasCommonAncestor(pairs, childA, childB) {
-    let aAncestors = []
-    let bAncestors = []
-//     find child in matrix, this will return the actual parent child array
-    const findParent = function(child, arr){
-        let parents = pairs.filter(subArr => subArr[1] === child).flat().filter(num => num !== child)
-        if (parents.length > 0){
-            arr.push(...parents)
-            debugger
-            if (parents.length > 1){
-                parents.forEach(subArr => findParent(subArr[0], arr))
-            } else {
-                findParent(arr[arr.length - 1], arr)
-            }
-        }
-    }
-    findParent(childA, aAncestors)
-    findParent(childB, bAncestors)
-    console.log(aAncestors)
-    console.log(bAncestors)
-    return (aAncestors.filter(val => bAncestors.includes(val)).length > 1) ? true : false
+
+
+function upcomingHolidays(events){
+  let closestDate = 366;
+  let closestHoliday = null;
+  let upNext = []
+  for(let i = 0; i < events.length; i++){
+      let jsDate = date.number_of_days_between(date.parse(events[i].date), date.today())
+      if (jsDate <= 31 && jsDate >= 0){
+          upNext.push(events[i])
+          if (Math.min(jsDate, closestDate) !== closestDate){
+              closestDate = jsDate;
+              closestHoliday = events[i]
+          }
+      }
+  }
+  if (!closestHoliday) return {'Coming Soon': null, 'Up Next': []}
+  upNext = upNext.filter(holiday => holiday !== closestHoliday).sort((a, b) => a.date - b.date).map(holiday => holiday.name)
+  return {'Coming Soon': daysAway(closestHoliday), "Up Next": upNext }
 }
+
+// Second Function
+function days_away_soonest(events){
+  let closestDate = 366
+  let closestHoliday = null;
+  for(let i = 0; i < events.length; i++){
+   let jsDate = date.number_of_days_between(date.parse(events[i].date), date.today())
+  if (jsDate >= 0){
+      if (Math.min(jsDate, closestDate) !== closestDate){
+        closestDate = jsDate;
+        closestHoliday = events[i]
+      }
+     }
+  }
+  if (!closestHoliday) return null
+  else return days_away(closestHoliday)
+}
+
+// First Function
+function daysAway(event){
+  const dateGap = date.number_of_days_between(date.parse(event.date), date.today())
+  if (dateGap === 0){
+    return `${event.name} is today`
+  } else if (dateGap === 1) {
+    return `${event.name} is 1 day away.`
+  } else if (dateGap > 1) {
+    return `${event.name} is ${dateGap} days away.`
+  } else {
+    return null
+  }
+}
+
+let date = {}
+
+
+// HELPER FUNCTIONS 
+//To parse a date string “YYYY-MM-DD” into a date object
+date.parse = (str) => Date.parse(str)  
+
+// To get today’s date as date object
+date.today = () => Date.parse("2020-09-29")
+
+//To get number of days between two dates by subtracting date2 from date1. 
+//The result can be +ve or -ve integer or zero
+date.number_of_days_between = (date1, date2) => (date1.valueOf()-date2.valueOf())/(24*3600000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // carpooling
+// var carPooling = function(trips, capacity) {
+//     const drop = new Map();
+//     trips.sort((a, b) => a[1] - b[1])
+//     let curr = 0;
+    
+//     for (let [num, start, end] of trips){
+//         curr += num
+//         for (let [stop, ppl] of drop){
+//             if (stop <= start){
+//                 curr -= ppl;
+//                 drop.delete(stop)
+//             }
+//         }
+//         debugger
+//         drop.set(end, (drop.get(end) || 0) + num);
+//         if (curr > capacity) return false;
+//     }
+//     return true;
+//   };
+  
+//   // an attempt
+//   const trips2 = [[9,3,6],[8,1,7],[6,6,8],[8,4,9],[4,2,9]]
+//   const cap2 = 28 // false
+//   const trips1 = [[2,1,5],[3,3,7]]
+//   const cap1 = 4 // false
+//   const trips3 = [[3,2,7],[3,7,9],[8,3,9]]
+//   const cap3 = 11 // true
+
+
+
+
+
+// const parentChildPairs1 = [
+//     [1, 3], [2, 3], [3, 6], [5, 6], [5, 7], [4, 5],
+//     [4, 8], [4, 9], [9, 11], [14, 4], [13, 12], [12, 9]
+// ];
+
+// const parentChildPairs2 = [
+//     [11, 10], [11, 12], [2, 3], [10, 2], [10, 5],
+//     [1, 3], [3, 4], [5, 6], [5, 7], [7, 8]
+// ];
+
+// const findParents = function(child, pairs){
+//     let parents = pairs.filter(subArr => subArr[1] === child)
+//     if(parents.length){
+//       return parents.flat().filter(val => val !== child)
+//     }
+//   }
+
+//   function hasCommonAncestor(childA, childB, pairs){
+//       let ancestorsA = findParents(childA, pairs)
+//       let ancestorsB = findParents(childB, pairs)
+//       if (!ancestorsA || !ancestorsB) return false
+//       let i = 0;
+//           while(i < ancestorsA.length){
+//               let newParents = findParents(ancestorsA[i], pairs)
+//               if (newParents) ancestorsA.push(...newParents)
+//               i++
+//           }
+//           let j = 0
+//           while (j < ancestorsB.length){
+//               let parentsB = findParents(ancestorsB[j], pairs)
+//               if (parentsB) ancestorsB.push(...parentsB)
+//               j++
+//            }
+//       return ancestorsA.filter(val => ancestorsB.includes(val)).length > 0
+//   }
 
 // capitalize everything in a nested array, t
 // let array = ['sean', 'derek', ['anna', 'beyonce', ['gaga'], 'jim'], 'karen', ['melinda', 'aimee', 'iris', ['joanne']], 'kayla']
