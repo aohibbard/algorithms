@@ -589,6 +589,24 @@ var removeDuplicates = function(nums){
     return counter;
 }
 
+// 268 missing number
+var missingNumber = function(nums) {
+  let sum = 0
+  nums.forEach(num => sum += num)
+let expectedSum = nums.length*(nums.length + 1) / 2
+  return expectedSum - sum
+};
+
+var missingNumber = function(nums) {
+  let numSet = new Set(nums)
+  for(let i=0; i<=nums.length; i++){
+      if(! numSet.has(i)){
+          return i
+      }
+  }
+};
+
+
 var lengthOfLastWord = function(s) {
   if (!s.includes(' ')) return s.length
   let newArr = s.split(' ')
