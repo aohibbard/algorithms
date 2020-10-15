@@ -16,6 +16,11 @@ var rotate = function(nums, k) {
   return nums
 };
 
+// using splice
+var rotate = function(nums, k) {
+  nums.splice(0,0,...nums.splice(nums.length - k))
+};
+
 // version numbers
 var compareVersion = function(version1, version2) {
   version1 = version1.split('.')
