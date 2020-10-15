@@ -9,7 +9,12 @@ var rotate = function(nums, k) {
   return nums
 };
 
-
+// leetcode returns NaN for splice but works in console
+var rotate = function(nums, k) {
+  nums.unshift(nums.splice(nums.length - k, nums.length))
+  nums.flat()
+  return nums
+};
 
 // version numbers
 var compareVersion = function(version1, version2) {
