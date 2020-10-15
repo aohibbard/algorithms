@@ -1,3 +1,16 @@
+// rotate array
+// 116 ms & 39.6 MB
+var rotate = function(nums, k) {
+  let i = 0;
+  while(i < k){
+      nums.unshift(nums.pop())
+      i++
+  }
+  return nums
+};
+
+
+
 // version numbers
 var compareVersion = function(version1, version2) {
   version1 = version1.split('.')
