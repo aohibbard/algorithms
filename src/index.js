@@ -2,6 +2,29 @@
 // and then modified it slightly to fit the conditions of the third problem
 // I'm not certain of the exact conditions for what holidays are in the "Up Next" array, so I've set it to holidays within the next 30 days
 
+
+const parentChildPairs = [
+  [1, 3], [2, 3], [3, 6], [5, 6],
+  [5, 7], [4, 5], [4, 8], [4, 9], [9, 11]
+];
+
+function findNodesWithZeroAndOneParents(arr){
+  if (arr.length === 0) return 0;
+  let parentsObj = {}
+  let childObj = {}
+  for (const subArr of arr){
+    parentsObj[subArr[0]] += 1 || 1
+    childObj[subArr[1]] += 1 || 1
+  }
+//   individuals with no parent -- any key in parentsObj not in childObj
+  let noParents = Object.keys(parentsObj).filter(key => !Object.keys(childObj).includes(key))
+  let oneParent = Object.keys(childObj).filter(key => childObj[key] === 1)
+  return {"No Parents": noParents, "One Parent": oneParent}
+}
+
+
+
+
 const eventsList = [ 
   {"name": "Halloween", "date": "2020-10-31"},
      {"name": "Diwali", "date": "2020-11-14"},
