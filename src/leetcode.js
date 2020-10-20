@@ -1,3 +1,15 @@
+// 1337
+var kWeakestRows = function(mat, k) {
+  let rows = {}
+  for(let i = 0; i < mat.length; i++){
+      rows[i] = mat[i].reduce((a, b) => a + b);
+  }
+  console.log(rows)
+  return Object.entries(rows).sort((a, b) => a[1] - b[1]).map(el => el[0]).splice(0, k)
+
+};
+
+
 // 350 intersection of 2 arrays
 let intersect = function(nums1, nums2) {
   let final=[];
