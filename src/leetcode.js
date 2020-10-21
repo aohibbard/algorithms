@@ -1,3 +1,30 @@
+// 414 third max
+// var thirdMax = function(nums) {
+//     nums = [...new Set(nums)]
+//     if (nums.length < 3) return Math.max(...nums)
+//     let ans = []
+//     let counter = 0
+//     while(nums.length || counter < 3){
+//         counter++
+//         ans.push(Math.max(...nums))
+//         let idx = nums.indexOf(ans[ans.length - 1])
+//         nums.splice(idx, 1)
+//     }
+//     return ans[2]
+// };
+
+var thirdMax = function(nums) {
+	nums = nums.sort((a,b)=>a-b);
+	var distinctArray = [...new Set(nums)];
+    if (distinctArray[distinctArray.length-3] == undefined) {
+        return distinctArray[distinctArray.length-1];
+    } 
+    else {
+        return distinctArray[distinctArray.length-3]; 
+    }
+};
+
+
 // 1122
 // 72ms beats 92.75% of JS
 // 38.7 MB beats 5.5%
