@@ -1,3 +1,26 @@
+// 1122
+// 72ms beats 92.75% of JS
+// 38.7 MB beats 5.5%
+var relativeSortArray = function(arr1, arr2) {
+  for(let i = 0; i < arr2.length; i++){
+      let timesAdded = 0
+      while(arr1.includes(arr2[i])){
+          timesAdded++
+          let idx = arr1.indexOf(arr2[i])
+          arr1.splice(idx, 1)
+          if(timesAdded <= 1){
+              continue
+          } else {
+              arr2.splice(i, 0, arr2[i])
+          }
+      }
+      i += (timesAdded - 1)
+  }
+  if (arr1.length) arr1.sort((a, b) => a - b)
+  return [...arr2, ...arr1]
+};
+
+
 // 1337
 var kWeakestRows = function(mat, k) {
   let rows = {}
