@@ -1,3 +1,33 @@
+// 1237 find sol
+var findSolution = function(customfunction, z) {
+  let sol = []
+  for(let i = 1; i <= z; i++){
+      for(let j = 1; j <= z; j++){
+          if (customfunction.f(i,j) === z) sol.push([i, j])
+      }
+  }
+  return sol
+};
+
+/* inPython
+class Solution(object):
+    def findSolution(self, customfunction, z):
+        """
+        :type num: int
+        :type z: int
+        :rtype: List[List[int]]
+        """
+        ans = []
+        Y = z + 1
+        for x in range(1, z+1):
+            if customfunction.f(x,1) > z: return ans
+            for y in range(Y, 0, -1):
+                if customfunction.f(x, y) == z:
+                    Y, _ = y-1, ans.append([x, y])
+                    break
+        return ans
+*/
+
 // 799 champagne tower
 var champagneTower = function(poured, query_row, query_glass) {
   let cups = [poured];
