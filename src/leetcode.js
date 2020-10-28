@@ -1,3 +1,27 @@
+// 228, summary ranges
+// 68 ms beats 95.19% 
+// memory usage 38.8 mb
+var summaryRanges = function(nums) {
+  if (!nums.length) return nums;
+  let sol = [];
+  for (let i = 0; i < nums.length; i++){
+      let start = nums[i]
+      let end = nums[i]
+      while(nums[i] + 1 === nums[i + 1]){
+          end = nums[i + 1]
+          i++
+      }
+      if (start === end){
+          start = start.toString()
+          sol.push(start)
+      } else {
+          let ans = start + '->' + end
+          sol.push(ans)
+      }
+  }
+  return sol;
+};
+
 // 1237 find sol
 var findSolution = function(customfunction, z) {
   let sol = []
