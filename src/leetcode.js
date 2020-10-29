@@ -1,3 +1,11 @@
+// 1436 destination city
+// not good
+var destCity = function(paths, currentRte = 0) {
+  let startCity = paths.map(subArr => subArr[0])
+  let ans = paths.filter(subArr => !startCity.includes(subArr[1])).flat()
+  return ans[1]
+}
+
 // 849 max distance between 2 people
 // 80 ms & 39.5 mb
 // beats 73% in runtime, 60% in memory
