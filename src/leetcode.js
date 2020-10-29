@@ -1,3 +1,21 @@
+// 849 max distance between 2 people
+// 80 ms & 39.5 mb
+// beats 73% in runtime, 60% in memory
+var maxDistToClosest = function(seats) {
+  if (!seats.length) return;
+  let count = 0;
+  let maxDist = 0;
+  for (let i = 0; i < seats.length; i++){
+      if (seats[i] === 1){
+          maxDist = Math.max(maxDist, count)
+          count = 0
+      } else {
+          count++
+      }
+  }
+  return Math.max(Math.ceil(maxDist / 2), seats.indexOf(1), seats.length - 1 - seats.lastIndexOf(1));
+}
+
 // 228, summary ranges
 // 68 ms beats 95.19% 
 // memory usage 38.8 mb
