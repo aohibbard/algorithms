@@ -1,6 +1,56 @@
 // Kalpesh -- I wanted to complete the function we had described for step 3 of this problem. I've left the second function we wrote,
 // and then modified it slightly to fit the conditions of the third problem
 // I'm not certain of the exact conditions for what holidays are in the "Up Next" array, so I've set it to holidays within the next 30 days
+let arr = [1, 1, 1, 1, 4]
+let dur = [10, 3, 6, 4, 2]
+
+function maxEvents(arrival, duration) {
+  // if (arrival.length < 2) return arrival.length;
+  // combine arrays into array of objects, sort by arrival time
+  let pairs = []
+  arrival.forEach((time, idx) => pairs.push({idx: idx, arrival: time, duration: duration[idx]}))
+  pairs.sort(function(a, b){
+          if(a.arrival < b.arrival) { return -1; }
+          if(a.arrival > b.arrival) { return 1; }
+          return 0;
+  })
+  let events = [0];
+  console.log(pairs)
+  for(let i = 0; i < pairs.length - 1; i++){
+    debugger
+      let last = events.length - 1
+      let currentDuration = pairs[last].arrival + pairs[last].duration
+      if (currentDuration <= pairs[i + 1].arrival){
+          events.push(i)
+      } else if (currentDuration >= pairs[i + 1].arrival + pairs[i + 1].duration){
+          events.pop();
+          events.push(i+1)
+      }
+  }
+  console.log(events)
+  return events.length;
+}
+
+
+
+
+const words = ['code', 'aaagmnrs', 'anagrams', 'doce']
+
+function isAnagram(word1, word2){
+  if (word1.length !== word2.length) return false;
+  word1 = word1.toLowerCase().split('')
+  word2 = word2.toLowerCase().split('')
+  for(let lttr of word1){
+      if (!word2.includes(lttr)){
+          return false;
+          break;
+      } else {
+          word2.splice(word2.indexOf(lttr), 1)
+      }
+  }
+  return true
+}
+
 
 
 const parentChildPairs = [
