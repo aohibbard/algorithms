@@ -1,4 +1,4 @@
-// November 3 2020 
+// 1446 . November 3 2020 
 // consecutive characters
 var maxPower = function(s) {
     let longestRun = 1;
@@ -12,6 +12,31 @@ var maxPower = function(s) {
     }
     return longestRun
 };
+
+/*
+in Python
+40ms runtime
+class Solution:
+    def maxPower(self, s: str) -> int:
+        longest = 1
+        if len(s) == 1:
+            return longest
+        current = 1
+        for i in range(1, len(s)):
+            if s[i] != s[i - 1]:
+                current = 1
+            else:
+                current += 1
+                if current > longest:
+                    longest = current
+        return longest
+
+        OR 
+
+        class Solution:
+    def maxPower(self, s: str) -> int:
+         return max(len(list(j)) for _,j in groupby(s))
+*/
 
 
 // FUN WITH ANAGRAMS
