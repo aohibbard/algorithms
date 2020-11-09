@@ -1,3 +1,20 @@
+// 832 flipping an image
+var flipAndInvertImage = function(A) {
+  let sol = []
+  for(let i=0; i < A.length; i++){
+      let newArr = []
+      for(let j=A.length - 1; j >= 0; j--){
+          if (A[i][j] === 1){
+              newArr.push(0)
+          } else {
+              newArr.push(1)
+          }
+      }
+      sol.push(newArr)
+  }
+  return sol
+};
+
 // 1436 destination city
 // not good
 var destCity = function(paths, currentRte = 0) {
