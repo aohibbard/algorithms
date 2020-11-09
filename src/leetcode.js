@@ -11,6 +11,11 @@ var canBeEqual = function(target, arr) {
   return true
 };
 
+/* simply python
+class Solution:
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        return sorted(target) == sorted(arr)
+*/
 
 
 // 1374 return str
