@@ -1,3 +1,18 @@
+// 1460
+var canBeEqual = function(target, arr) {
+  for(let i = 0; i < arr.length; i++){
+      if (target.includes(arr[i])){
+          let idx = target.indexOf(arr[i])
+          target.splice(idx, 1)
+      } else {
+          return false
+      }
+  }
+  return true
+};
+
+
+
 // 1374 return str
 // var generateTheString = function(n) {
 //     let str = []
