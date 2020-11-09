@@ -14,6 +14,16 @@
 var generateTheString = function(n) {
   return (n%2 == 0)? 'a'.repeat(n-1)+'b' : 'a'.repeat(n)
 }
+// in python fast sol
+// class Solution:
+//     def generateTheString(self, n: int) -> str:
+//         str = ''
+//         if n % 2 == 0:
+//             str = 'a' * (n - 1)
+//             str += 'b'
+//         else:
+//             str = 'a' * n
+//         return str
 
 
 // 832 flipping an image
