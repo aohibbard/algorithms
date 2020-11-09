@@ -1,3 +1,14 @@
+// 1299 replace elements
+var replaceElements = function(arr) {
+  for(let i = 0; i < arr.length - 1; i++){
+      let max = Math.max(...arr.slice(i + 1, arr.length))
+      arr[i] = max
+  }
+  arr[arr.length - 1] = -1
+  return arr
+};
+
+
 // 1460
 var canBeEqual = function(target, arr) {
   for(let i = 0; i < arr.length; i++){
@@ -10,6 +21,7 @@ var canBeEqual = function(target, arr) {
   }
   return true
 };
+
 
 /* simply python
 class Solution:
