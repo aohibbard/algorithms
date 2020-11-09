@@ -1,3 +1,21 @@
+// 1374 return str
+// var generateTheString = function(n) {
+//     let str = []
+//     while(str.length < n){
+//         str.push('a')
+//     }
+//     if (n % 2 === 0){
+//         str.pop()
+//         str.push('b')
+//     }
+//     return str.join('')
+// };
+
+var generateTheString = function(n) {
+  return (n%2 == 0)? 'a'.repeat(n-1)+'b' : 'a'.repeat(n)
+}
+
+
 // 832 flipping an image
 var flipAndInvertImage = function(A) {
   let sol = []
