@@ -15,6 +15,32 @@ var flipAndInvertImage = function(A) {
   return sol
 };
 
+/* PYTHON
+ class Solution:
+def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+return [[0 if i else 1 for i in row[::-1]] for row in A]
+
+// faster because it modifies in place. 
+[::-1] iterates from back of row 
+leet code does not allow negative indicies beyond -1, but this allows a work around
+class Solution:
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        
+        sol= []
+        
+        for i in range(len(A)):
+            reverse_row = A[i][::-1]
+            for j in range(len(reverse_row)):
+                if reverse_row[j] == 0:
+                    reverse_row[j] = 1
+                else:
+                    reverse_row[j] = 0
+            sol.append(reverse_row)
+        return sol
+
+*/
+
+
 // 1436 destination city
 // not good
 var destCity = function(paths, currentRte = 0) {
