@@ -5,6 +5,18 @@ var trimMean = function(arr) {
   return newArr.reduce((a, b) => a + b) / newArr.length
 };
 
+/* in Python
+
+class Solution:
+    def trimMean(self, arr: List[int]) -> float:
+        arr.sort()
+        // must conver percentage into integer so it can be used as array
+        fiveP = int(len(arr) * .05)
+        // arr manipulation is a slice from ahead fiveP to going back to fiveP
+        // multiple 2 * fiveP because this accounts for slice the total 10 percent off the length
+        return sum(arr[fiveP:-fiveP]) / (len(arr) - (2 * fiveP))
+*/
+
 // 1207 unique occurences
 var uniqueOccurrences = function(arr) {
   let counter = {}
