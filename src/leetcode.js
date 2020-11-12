@@ -1,3 +1,10 @@
+// 1619 mean of array
+var trimMean = function(arr) {
+  const fivePercent = 0.05 * arr.length
+  let newArr = arr.sort((a, b) => a - b).slice(fivePercent, arr.length - fivePercent)
+  return newArr.reduce((a, b) => a + b) / newArr.length
+};
+
 // 1207 unique occurences
 var uniqueOccurrences = function(arr) {
   let counter = {}
