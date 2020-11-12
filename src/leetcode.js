@@ -1,3 +1,30 @@
+// 47 permutations 2
+var permuteUnique = function(nums) {
+  let sol = []
+  let count = new Map();
+  
+  for (let n of nums){
+      count.set(n, count.get(n)+1 || 1)
+  }
+  
+  function backtrack(nums, arr){
+      if(arr.length == nums.length){
+          sol.push([...arr])
+          return
+      }
+      for(let [key, val] of count){
+          if(val == 0) continue;
+          arr.push(key)
+          count.set(key, --val)
+          backtrack(nums, arr)
+          arr.pop()
+          count.set(key, ++val)
+      }
+  }
+  backtrack(nums, [])
+  return sol
+};
+
 // 1299 replace elements
 var replaceElements = function(arr) {
   for(let i = 0; i < arr.length - 1; i++){
