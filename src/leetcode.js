@@ -1,3 +1,14 @@
+// 1207 unique occurences
+var uniqueOccurrences = function(arr) {
+  let counter = {}
+  for(let i = 0; i < arr.length; i++){
+      counter[arr[i]] = counter[arr[i]] + 1 || 1
+  }
+  const vals = Object.keys(counter).map(key => counter[key])
+  return vals.length === new Set([...vals]).size
+  
+};
+
 // 47 permutations 2
 var permuteUnique = function(nums) {
   let sol = []
