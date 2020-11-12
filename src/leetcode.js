@@ -8,6 +8,17 @@ var uniqueOccurrences = function(arr) {
   return vals.length === new Set([...vals]).size
   
 };
+/* in python
+// class Solution:
+def uniqueOccurrences(self, arr: List[int]) -> bool:
+d = {}
+for i in arr:
+    if i not in d:
+        d[i] = 1
+    else:
+        d[i] += 1
+return len(set(list(d.values()))) == len(list(d.values()))
+*/
 
 // 47 permutations 2
 var permuteUnique = function(nums) {
