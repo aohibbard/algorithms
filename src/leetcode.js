@@ -19,6 +19,20 @@ var average = function(salary) {
   return salary.reduce((a,c)=> c !== min && c !== max ? a + c : a,0)/(salary.length - 2)  
 };
 
+/*
+In Python
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        min_val = salary[0]
+        max_val = salary[0]
+        total = 0
+        for val in salary:
+            min_val = min(min_val, val)
+            max_val = max(max_val, val)
+            total += val
+        return (total - min_val - max_val) / (len(salary) - 2)
+*/
+
 
 // 1619 mean of array
 var trimMean = function(arr) {
