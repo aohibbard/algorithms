@@ -45,6 +45,26 @@ class Solution:
 
 */
 
+// 189 max balloons
+var maxNumberOfBalloons = function(text) {
+  let count = 0;
+  const map = {}
+  for(const letter of text){
+      map[letter] = map[letter] + 1 || 1
+  }
+  while(true){
+      if(map.b && map.a && map.l >= 2 && map.o >= 2 && map.n){
+          count++
+          map.b--
+          map.a--
+          map.l -= 2
+          map.o -= 2
+          map.n -= 1
+      } else {
+          return count
+      }
+  }
+};
 
 // 1619 mean of array
 var trimMean = function(arr) {
