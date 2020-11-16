@@ -12,6 +12,13 @@ var average = function(salary) {
   return (sum - min - max) / (salary.length - 2)
 };
 
+// alt
+var average = function(salary) {
+  let min = Math.min(...salary)
+  let max = Math.max(...salary)
+  return salary.reduce((a,c)=> c !== min && c !== max ? a + c : a,0)/(salary.length - 2)  
+};
+
 
 // 1619 mean of array
 var trimMean = function(arr) {
