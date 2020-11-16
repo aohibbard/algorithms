@@ -31,6 +31,18 @@ class Solution:
             max_val = max(max_val, val)
             total += val
         return (total - min_val - max_val) / (len(salary) - 2)
+  
+slower because of sort but works
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        salary = sorted(salary)
+        // salary from index 1 to penultimate
+        salary = salary[1:-1]
+        sum = 0
+        for val in salary:
+            sum += val
+        return sum / len(salary)
+
 */
 
 
