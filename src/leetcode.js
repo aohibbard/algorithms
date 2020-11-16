@@ -1,3 +1,18 @@
+//  1491 average salary exclusindg min and max
+var average = function(salary) {
+  
+  let min = salary[0]
+  let max = salary[0]
+  let sum = 0
+  for(const num of salary){
+      min = Math.min(num, min)
+      max = Math.max(num, max)
+      sum += num
+  }
+  return (sum - min - max) / (salary.length - 2)
+};
+
+
 // 1619 mean of array
 var trimMean = function(arr) {
   const fivePercent = 0.05 * arr.length
