@@ -1,4 +1,6 @@
 // 1550 three consecutive odd
+
+/*
 class Solution:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
         counter = 0
@@ -10,6 +12,7 @@ class Solution:
             if counter == 3:
                 return True 
         return False 
+  */
 
 
 // 225 implement stack
