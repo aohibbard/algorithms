@@ -20,7 +20,7 @@ class Solution:
 # unique morse code strings
 # given some strings in the alphabet, transform to Morse code, see which is unique
 class Solution:
-    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+    def unique_morse_representations(self, words: List[str]) -> int:
         morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
         abcs = list(string.ascii_lowercase)
         sol = []
@@ -30,3 +30,8 @@ class Solution:
                 new_word += morse[abcs.index(char)]
             sol.append(new_word)
         return len(list(set(sol)))
+
+# 242 valid anagram
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
