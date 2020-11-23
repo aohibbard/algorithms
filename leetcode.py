@@ -15,3 +15,18 @@ class Solution:
             return taken, not_taken
             # return largest of 2 possibilites
         return max(depth_first(root))
+
+# 22 Nov. 2020
+# unique morse code strings
+# given some strings in the alphabet, transform to Morse code, see which is unique
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        abcs = list(string.ascii_lowercase)
+        sol = []
+        for word in words:
+            new_word = ''
+            for char in word:
+                new_word += morse[abcs.index(char)]
+            sol.append(new_word)
+        return len(list(set(sol)))
