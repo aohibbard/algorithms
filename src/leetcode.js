@@ -671,6 +671,35 @@ var intersection = function(nums1, nums2) {
   return [...ans]
 }
 
+// 860 lemonade
+var lemonadeChange = function(bills) {
+  if (!bills.length || bills[0] !== 5) return false
+  let change = {'5': 0, '10': 0, '20': 0}
+  for(let i = 0; i < bills.length; i++){
+      if(bills[i] === 5){
+          change['5']++
+      } else if (bills[i] === 10){
+          change['10']++
+          if (change['5'] === 0){
+              return false
+          } else {
+              change['5']--
+          }
+      } else {
+          change['20']++
+          if (change['10'] >= 1 && change['5'] >= 1){
+              change['10']--
+              change['5']--
+          } else if (change['5'] >= 3){
+              change['5'] -= 3
+          } else {
+              return false
+          }
+      }
+  }
+  return true
+};
+
 // last substring
 // good run time, bad memory
 var lengthOfLastWord = function(s) {
