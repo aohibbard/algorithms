@@ -43,4 +43,16 @@ class Solution:
         while '0' in str(n - i) or '0' in str(i):
             i += 1
         return [i, n - i]
-        
+
+# December 4
+class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        if k == 1:
+            return 1
+        count = 1
+        for i in range(2, n):
+            if n % i == 0:
+                count += 1
+            if count == k:
+                return i
+        return (n if count+1==k else -1)
