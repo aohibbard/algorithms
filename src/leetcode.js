@@ -1,3 +1,25 @@
+//29 valid parentheses
+var isValid = function(s) {
+  const obj = {
+      ')': '(',
+      '}': '{',
+      ']': '['
+  };
+  
+  let stack = [];
+  
+  for(let i = 0; i < s.length; i++){
+      if (obj[s[i]]){
+          if (stack.pop() !== obj[s[i]]){
+              return false
+          }
+      } else {
+          stack.push(s[i]);
+      }
+  }
+  return stack.length > 0 ? false : true;
+};
+
 // 1550 three consecutive odd
 
 /*
