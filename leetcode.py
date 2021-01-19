@@ -89,3 +89,26 @@ class Solution:
                 longest = res
         
         return longest
+
+# reverse integer
+class Solution:
+    def reverse(self, x: int) -> int:
+        str_x = str(x)
+        if len(str_x) == 1:
+            return x
+        nums = list('0123456789')
+        new_string = ''
+        i = len(str_x) - 1
+        while i >= 0:
+            if len(new_string) == 0 and str_x[i] == 0:
+                continue
+            if str_x[i] in nums:
+                new_string = new_string + str_x[i]
+            i -= 1
+        res = int(new_string)
+        if abs(res) >= 2**31 - 1:
+            return 0
+        if x < 0:
+            res = res * -1
+        return res
+          
