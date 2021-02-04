@@ -1,3 +1,15 @@
+//122 buy & sell stock 2
+var maxProfit = function(prices) {
+    let maxProfit = 0;
+    for(let i = 0; i < prices.length; i++){
+        //count the progressive climb of the stock
+        if (prices[i] < prices[i + 1]){
+            maxProfit += prices[i + 1] - prices[i]
+        }
+    }
+    return maxProfit
+};
+
 //29 valid parentheses
 var isValid = function(s) {
   const obj = {
